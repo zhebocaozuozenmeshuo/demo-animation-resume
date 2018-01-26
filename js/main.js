@@ -20,7 +20,7 @@ function writeCode(prefix, code, callback) {
                 callback.call()
             }
         }
-    }, 1000 / 1000)
+    }, 1000 / 60)
 }
 
 function writeMarkdown(markdown, fn) {
@@ -29,7 +29,7 @@ function writeMarkdown(markdown, fn) {
     var id = setInterval(() => {
         log('write md')
         n += 1
-        domPaper.innerHTML = markdown.substring(0, n)
+        domPaper.innerHTML = marked(markdown.substring(0, n))
         domPaper.scrollTop = 10000
         // domCode.scrollTop = domPaper.scrollHeight
         if (n >= markdown.length) {
@@ -39,20 +39,15 @@ function writeMarkdown(markdown, fn) {
                 fn.call()
             }
         }
-    }, 1000 / 60)
+    }, 1000 / 30)
 }
 
 var result = ` /*
-* 面试官你好，我是xxx
-* 我将以动画的形式来介绍我自己
-
-* 只用文字介绍太单调了
-* 我就用代码来介绍吧
-
-* CRM Copy Run Modify
-* animationresume
-
-* 首先准备一些样式
+* 晚上吼啊... 
+* 深夜刷知乎 刷到一个治愈的答案。
+* 是一首诗
+* 但为了看起来不辣么单调
+* 首先准备了一些样式
 */
 
 * {
@@ -85,24 +80,25 @@ html {
 #code {
     transform: rotate(360deg);
 }
-/* 不玩了 我来介绍一下我自己 */
+/* 不玩了 接下来给大家看那首诗 */
 /* 呐 我需要一张白纸 */
 #code {
     position: fixed;
     left: 0;
-    width: 50%;
-    height: 100;
+    width: 100%;
+    height: 30%;
 }
 #paper {
     position:fixed;
     right: 0;
-    width: 50%;
-    height: 100%;
+    top: 30%;
+    width: 100%;
+    height: 70%;
     background: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 16px;
+    padding: 1px;
 }
 #paper > .content {
     height: 100%;
@@ -119,8 +115,16 @@ var result2 =
 // 回调也可以拿同步结果
 // writeCode(result2)
 
+// marked.js
 var md = 
-` # 标题1
+` # 一次最多放两个
+  ***
+  ## 你如果
+  ## 缓缓的把手举起来
+  ## 举到顶
+  ## 再突然张开五指
+  ## 那恭喜你
+  ## 你刚刚给自己放了一个烟花
 `
 
 writeCode('', result, ()=> {

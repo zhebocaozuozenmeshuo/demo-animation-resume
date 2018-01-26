@@ -14,5 +14,6 @@
     overflow: hidden;
 }
 #paper > pre {
+    padding-top: 12px;
     padding-left: 12px;
 }
